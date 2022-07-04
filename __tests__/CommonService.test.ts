@@ -22,7 +22,7 @@ describe('fetchDealsFromApi', () => {
 
     expect(allDeals).resolves.toEqual([dummyGetResponse]);
     expect(axios.get).toHaveBeenCalledWith(`${apiHost}/api/deals`);
-    // expect(axios.get).toHaveBeenCalled(1);
+    expect(axios.get).toHaveBeenCalledTimes(1);
   });
 
   it('fetches the details of a deal for a given deal Id', async () => {
@@ -34,6 +34,7 @@ describe('fetchDealsFromApi', () => {
 
     expect(dealDetail).resolves.toEqual([dummyGetResponse]);
     expect(axios.get).toHaveBeenCalledWith(`${apiHost}/api/deals/101`);
+    expect(axios.get).toHaveBeenCalledTimes(2);
   });
 
   it('fetches the deals from search', async () => {
@@ -47,5 +48,6 @@ describe('fetchDealsFromApi', () => {
     expect(axios.get).toHaveBeenCalledWith(
       `${apiHost}/api/deals?searchTerm=search`,
     );
+    expect(axios.get).toHaveBeenCalledTimes(3);
   });
 });
